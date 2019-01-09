@@ -10,7 +10,7 @@
 	<Name><![CDATA[Sims_assignment_Its]]></Name>
 	<EngineVersion>6</EngineVersion>
 	<JavaPackageName><![CDATA[sims_assignment_its]]></JavaPackageName>
-	<ModelTimeUnit><![CDATA[Second]]></ModelTimeUnit>
+	<ModelTimeUnit><![CDATA[Day]]></ModelTimeUnit>
 	<ActiveObjectClasses>
 		<!--   =========   Active Object Class   ========  -->
 		<ActiveObjectClass>
@@ -85,11 +85,11 @@ HeartBroken.reset();]]></StartupCode>
 					<OccurrenceDate>1546675200000</OccurrenceDate>
 					<OccurrenceTime Class="CodeUnitValue">
 						<Code><![CDATA[0]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
 					</OccurrenceTime>
 					<RecurrenceCode Class="CodeUnitValue">
 						<Code><![CDATA[1]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
 					</RecurrenceCode>
 			</DatasetsCreationProperties>
 			<ScaleRuler>
@@ -120,6 +120,9 @@ HeartBroken.reset();]]></StartupCode>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[10]]></Code>
+						</InitialValue>
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
@@ -176,7 +179,10 @@ HeartBroken.reset();]]></StartupCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[double]]></Type>        
+						<Type><![CDATA[boolean]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[false]]></Code>
+						</InitialValue>
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
@@ -188,7 +194,10 @@ HeartBroken.reset();]]></StartupCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[double]]></Type>        
+						<Type><![CDATA[boolean]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[false]]></Code>
+						</InitialValue>
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
@@ -231,6 +240,9 @@ HeartBroken.reset();]]></StartupCode>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
 					</Properties>
 				</Variable>
 				<Variable Class="AuxVariable">
@@ -431,14 +443,14 @@ HeartBroken.reset();]]></StartupCode>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Properties TriggerType="rate" Mode="occuresOnce">
+					<Properties TriggerType="rate" Mode="userControls">
 						<Timeout Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
+							<Code><![CDATA[0.05]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
 						</Timeout>
 						<Rate Class="CodeUnitValue">
 							<Code><![CDATA[0.05]]></Code>
-							<Unit Class="RateUnits"><![CDATA[PER_SECOND]]></Unit>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
 						</Rate>
 						<OccurrenceAtTime>true</OccurrenceAtTime>
 						<OccurrenceDate>1546675200000</OccurrenceDate>
@@ -473,7 +485,7 @@ InLove.reset();]]></Action>
 						</Timeout>
 						<Rate Class="CodeUnitValue">
 							<Code><![CDATA[0.04]]></Code>
-							<Unit Class="RateUnits"><![CDATA[PER_SECOND]]></Unit>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
 						</Rate>
 						<OccurrenceAtTime>true</OccurrenceAtTime>
 						<OccurrenceDate>1546675200000</OccurrenceDate>
@@ -512,11 +524,11 @@ HeartBroken.reset();]]></Action>
 						<OccurrenceDate>1546675200000</OccurrenceDate>
 						<OccurrenceTime Class="CodeUnitValue">
 							<Code><![CDATA[0]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
 						</OccurrenceTime>
 						<RecurrenceCode Class="CodeUnitValue">
 							<Code><![CDATA[exponential(1/30.5)]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
 						</RecurrenceCode>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
@@ -554,7 +566,7 @@ Damage= 0; ]]></Action>
 					</Properties>
 					<Action><![CDATA[if(Savings <= -500)
 {
-Broke = 1;
+Broke = true;
 finishSimulation();
 }]]></Action>
 				</Event>
@@ -588,7 +600,7 @@ finishSimulation();
 						<Condition><![CDATA[Mom<=0 && Dad<=0]]></Condition>
 					</Properties>
 					<Action><![CDATA[if(Mom<=0 && Dad<=0){
-Divorce = 1;
+Divorce = true;
 finishSimulation();
 }]]></Action>
 				</Event>
@@ -600,10 +612,10 @@ finishSimulation();
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Properties TriggerType="rate" Mode="occuresOnce">
+					<Properties TriggerType="timeout" Mode="userControls">
 						<Timeout Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+							<Code><![CDATA[uniform(10,30)]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
 						</Timeout>
 						<Rate Class="CodeUnitValue">
 							<Code><![CDATA[uniform(10,30)]]></Code>
@@ -626,7 +638,11 @@ finishSimulation();
 SocialSecurity = 0;
 Salary = 15;
 Unemploy = 0;
-//Employed.restart();
+/*PartTime_M = 0;
+if(Savings<500){
+OverTime_D = 1;
+}*/
+Employed.restart();
 }
 
 else
@@ -634,10 +650,14 @@ else
 SocialSecurity = 5;
 Salary = 0;
 Unemploy = 1;
-
+/*OverTime_D = 0;
+if(Savings<500){
+PartTime_M=1;
+}*/
 TotalUnempDays+=UnEmpRate;
 UnEmployed.restart();
 }]]></Action>
+					<Logging>false</Logging>
 				</Event>
 				<Event>
 					<Id>1546643906942</Id>
@@ -647,10 +667,10 @@ UnEmployed.restart();
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Properties TriggerType="rate" Mode="occuresOnce">
+					<Properties TriggerType="timeout" Mode="userControls">
 						<Timeout Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+							<Code><![CDATA[UnEmpRate]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
 						</Timeout>
 						<Rate Class="CodeUnitValue">
 							<Code><![CDATA[UnEmpRate]]></Code>
@@ -673,7 +693,10 @@ UnEmployed.restart();
 SocialSecurity = 0;
 Salary = 15;
 Unemploy = 0;
-
+/*PartTime_M = 0;
+if(Savings<500){
+OverTime_D = 1;
+}*/
 Employed.restart();
 }
 else
@@ -681,8 +704,12 @@ else
 SocialSecurity = 5;
 Salary = 0;
 Unemploy = 1;
+/*OverTime_D = 0;
+if(Savings<500){
+PartTime_M=1;
+}*/
 TotalUnempDays+=UnEmpRate;
-//UnEmployed.restart();
+UnEmployed.restart();
 }]]></Action>
 				</Event>
 				<Event>
@@ -693,9 +720,9 @@ TotalUnempDays+=UnEmpRate;
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Properties TriggerType="condition" Mode="occuresOnce">
+					<Properties TriggerType="condition" Mode="userControls">
 						<Timeout Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
+							<Code><![CDATA[(Mom>=10) || (Mom<=-10)||(Dad>=10)||(Dad<=-10)]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
 						</Timeout>
 						<Rate Class="CodeUnitValue">
@@ -712,16 +739,17 @@ TotalUnempDays+=UnEmpRate;
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
 						</RecurrenceCode>
-						<Condition><![CDATA[(Mom>10) || (Mom< -10)||(Dad>10)||(Dad<-10)]]></Condition>
+						<Condition><![CDATA[Mom >= 10 || Mom <= -10 || Dad >= 10 || Dad <= -10]]></Condition>
 					</Properties>
-					<Action><![CDATA[if(Mom>=10)
+					<Action><![CDATA[if(Mom>=10){
 Mom = 10;
-if(Mom <= -10)
-Mom = -10;
-if(Dad >= 10)
-Dad = 10;
-if(Dad <= -10)
-Dad = -10;]]></Action>
+}
+if(Mom <= -10){
+Mom = -10;}
+if(Dad >= 10){
+Dad = 10;}
+if(Dad <= -10){
+Dad = -10;}]]></Action>
 				</Event>
 			</Events>
 			<AgentLinks>
@@ -761,11 +789,11 @@ Dad = -10;]]></Action>
 					<OccurrenceDate>1546675200000</OccurrenceDate>
 					<OccurrenceTime Class="CodeUnitValue">
 						<Code><![CDATA[0]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
 					</OccurrenceTime>
 					<RecurrenceCode Class="CodeUnitValue">
 						<Code><![CDATA[1]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
 					</RecurrenceCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Width>350</Width>
@@ -794,9 +822,9 @@ Dad = -10;]]></Action>
 					<ShowLegend>true</ShowLegend>
 					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
 					<TimeWindowUnits>MODEL_TIME_UNIT</TimeWindowUnits>
-					<VerScaleFromExpression><![CDATA[0]]></VerScaleFromExpression>
-					<VerScaleToExpression><![CDATA[1]]></VerScaleToExpression>
-					<VerScaleType>AUTO</VerScaleType>
+					<VerScaleFromExpression><![CDATA[-11]]></VerScaleFromExpression>
+					<VerScaleToExpression><![CDATA[11]]></VerScaleToExpression>
+					<VerScaleType>FIXED</VerScaleType>
 					<DrawLine>true</DrawLine>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
@@ -817,8 +845,8 @@ Dad = -10;]]></Action>
 						<PointStyle>NONE</PointStyle>
 						<LineWidth>1.0</LineWidth>
 					</DatasetExpression>
-					<SamplesToKeep>100</SamplesToKeep>
-					<TimeWindowExpression><![CDATA[100]]></TimeWindowExpression>
+					<SamplesToKeep>2750</SamplesToKeep>
+					<TimeWindowExpression><![CDATA[2750]]></TimeWindowExpression>
 					<FillAreaUnderLine>true</FillAreaUnderLine>
 					<LabelFormat>MODEL_TIME_UNITS</LabelFormat>
     			</TimePlot>
@@ -835,11 +863,11 @@ Dad = -10;]]></Action>
 					<OccurrenceDate>1546675200000</OccurrenceDate>
 					<OccurrenceTime Class="CodeUnitValue">
 						<Code><![CDATA[0]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
 					</OccurrenceTime>
 					<RecurrenceCode Class="CodeUnitValue">
 						<Code><![CDATA[1]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
 					</RecurrenceCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Width>380</Width>
@@ -916,14 +944,14 @@ Dad = -10;]]></Action>
 		<Id>1546614295667</Id>
 		<Name><![CDATA[RunConfiguration]]></Name>
 		<ModelTimeProperties>
-			<StopOption><![CDATA[Stop at specified time]]></StopOption>
+			<StopOption><![CDATA[Stop at specified date]]></StopOption>
 			<InitialDate><![CDATA[1546560000000]]></InitialDate>	
 			<InitialTime><![CDATA[0.0]]></InitialTime>	
-			<FinalDate><![CDATA[1549238400000]]></FinalDate>	
-			<FinalTime><![CDATA[100.0]]></FinalTime>	
+			<FinalDate><![CDATA[1578098557000]]></FinalDate>	
+			<FinalTime><![CDATA[3.1538557E7]]></FinalTime>	
 		</ModelTimeProperties>
 		<AnimationProperties>
-			<StopNever>true</StopNever>
+			<StopNever>false</StopNever>
 			<ExecutionMode>realTimeScaled</ExecutionMode>
 			<RealTimeScale>1.0</RealTimeScale>
 			<EnableZoomAndPanning>true</EnableZoomAndPanning>
@@ -983,14 +1011,14 @@ Dad = -10;]]></Action>
 				<Title><![CDATA[Sims_assignment_Its : Simulation]]></Title>	
 				<EnableDeveloperPanel>true</EnableDeveloperPanel>
 				<ShowDeveloperPanelOnStart>false</ShowDeveloperPanelOnStart>
-				<RealTimeScale>1.0</RealTimeScale>
+				<RealTimeScale>25.0</RealTimeScale>
 			</PresentationProperties>
 			<ModelTimeProperties>
-				<StopOption><![CDATA[Never]]></StopOption>
-				<InitialDate><![CDATA[1546560000000]]></InitialDate>	
+				<StopOption><![CDATA[Stop at specified date]]></StopOption>
+				<InitialDate><![CDATA[1546992000000]]></InitialDate>	
 				<InitialTime><![CDATA[0.0]]></InitialTime>	
-				<FinalDate><![CDATA[1549238400000]]></FinalDate>	
-				<FinalTime><![CDATA[100.0]]></FinalTime>	
+				<FinalDate><![CDATA[1578530557000]]></FinalDate>	
+				<FinalTime><![CDATA[365.0295949074074]]></FinalTime>	
 			</ModelTimeProperties>
 		</SimulationExperiment>	
 	</Experiments>
